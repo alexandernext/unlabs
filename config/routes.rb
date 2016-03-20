@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'relationships#index'
+  root 'countries#index'
 
   resources :countries do
     collection do
