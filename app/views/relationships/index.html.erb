@@ -1,0 +1,26 @@
+<% @relationship_search = Relationship.new %>
+<%= form_for @relationship_search, :url => search_relationships_url do |f| %>
+<div class="row">
+  <h1 class="text-center"><b>Explore relationships1</b></h1>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-md-4 col-md-offset-2 text-right">
+    <p class="caption">Country 1</p>
+    <%= f.select :country_id, Country.all.collect {|p| [ p.name, p.id, :title => p.flag ] }, {}, { :class => 'selectpicker', 'data-live-search' => 'true'}%>
+  </div>
+  <div class="col-xs-6 col-md-4 text-left">
+    <p class="caption">Country 2</p>
+    <%= f.select :friend_id, Country.all.collect {|p| [ p.name, p.id, :title => p.flag ] }, {}, { :class => 'selectpicker', 'data-live-search' => 'true'}%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3 text-center">
+    <%= f.submit 'Run the numbers!', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<script>
+  $(document).ready(function(){
+    initForm();
+  })
+</script>

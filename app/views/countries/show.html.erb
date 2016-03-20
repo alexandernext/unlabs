@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3 text-center">
+    <img class="inline img-responsive inline-flag-left" src="/flags/<%= @country.flag %>"></img>
+    <h2 class="inline"><b><%= @country.name %></b></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 text-right">
+    <p class="caption">Best Allies</p>
+    <% @country.relationships.sort_by { |rel| rel.score }.reverse()[1..12].each do |friendship| %>
+    <a href="<%= relationship_path(friendship) %>">
+      <h4 class="inline"><%= friendship.friend.name %></h4>
+    </a>
+    <img class="inline img-responsive inline-flag-right flag-list" src="/flags/<%= friendship.friend.flag %>"></img>
+      <br/>
+    <% end %>
+  </div>
+  <div class="col-sm-6">
+    <p class="caption">Worst Enemies</p>
+    <% @country.relationships.sort_by { |rel| rel.score }[1..12].each do |friendship| %>
+      <img class="inline img-responsive inline-flag-left flag-list" src="/flags/<%= friendship.friend.flag %>"></img>
+    <a href="<%= relationship_path(friendship) %>">
+      <h4 class="inline"><%= friendship.friend.name %></h4>
+    </a>
+      <br/>
+    <% end %>
+  </div>
+</div>
+    <div class="row">
+      <%= form_for @relationship_search = Relationship.new, :url => search_relationships_url do |f| %>
+      <div class="col-xs-12 text-center">
+        <h2><b>Explore relationships!</b></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-sm-4 col-sm-offset-2 text-right">
+        <p class="caption">Country 1</p>
+        <%= f.select :country_id, Country.all.collect {|p| [ p.name, p.id, :title => p.flag ] }, { :selected => @country.id }, { :class => 'selectpicker', 'data-live-search' => 'true'}%>
+      </div>
+      <div class="col-xs-6 col-sm-4 text-left">
+        <p class="caption">Country 2</p>
+        <%= f.select :friend_id, Country.all.collect {|p| [ p.name, p.id, :title => p.flag ] }, {}, { :class => 'selectpicker', 'data-live-search' => 'true'}%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+        <%= f.submit 'Run the numbers!', class: 'btn btn-primary' %>
+      </div>
+    </div>
+    <% end %>
+
+    <script>
+      $(document).ready(function(){
+        initForm();
+      })
+    </script>
+  </div>
+</div>

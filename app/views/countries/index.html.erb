@@ -1,0 +1,22 @@
+<% @country = Country.new %>
+<%= form_for @country, :url => search_countries_url do |f| %>
+<div class="row">
+  <h1 class="text-center"><b>Explore countries!</b></h1>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
+    <p class="caption">Your Country</p>
+    <%= f.select :id, Country.all.collect {|p| [ p.name, p.id, :title => p.flag ] }, {}, { :class => 'selectpicker', 'data-live-search' => 'true'}%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3 text-center">
+    <%= f.submit 'Explore!', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<script>
+  $(document).ready(function(){
+    initCountryForm();
+  })
+</script>
