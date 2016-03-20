@@ -2,7 +2,7 @@
 function formatNation (nation) {
   if (!nation.id) { return nation.text; }
   var $nation = $(
-    '<span><img class="img-responsive flag-selection inline" src="/assets/' + nation.element.title + '" />' + nation.text + '</span>'
+    '<span><img class="img-responsive flag-selection inline" src="/flags/' + nation.element.title + '" />' + nation.text + '</span>'
   );
   return $nation;
 };
