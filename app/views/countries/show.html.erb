@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3 text-center">
-    <img class="inline img-responsive inline-flag-left" src="/flags/<%= @country.flag %>"></img>
+    <img class="inline img-responsive inline-flag-left" src="/<%= @country.flag %>"></img>
     <h2 class="inline"><b><%= @country.name %></b></h1>
   </div>
 </div>
@@ -12,14 +12,14 @@
     <a href="<%= relationship_path(friendship) %>">
       <h4 class="inline"><%= friendship.friend.name %></h4>
     </a>
-    <img class="inline img-responsive inline-flag-right flag-list" src="/flags/<%= friendship.friend.flag %>"></img>
+    <img class="inline img-responsive inline-flag-right flag-list" src="/<%= friendship.friend.flag %>"></img>
       <br/>
     <% end %>
   </div>
   <div class="col-sm-6">
     <p class="caption">Worst Enemies</p>
     <% @country.relationships.sort_by { |rel| rel.score }[1..12].each do |friendship| %>
-      <img class="inline img-responsive inline-flag-left flag-list" src="/flags/<%= friendship.friend.flag %>"></img>
+      <img class="inline img-responsive inline-flag-left flag-list" src="/<%= friendship.friend.flag %>"></img>
     <a href="<%= relationship_path(friendship) %>">
       <h4 class="inline"><%= friendship.friend.name %></h4>
     </a>
