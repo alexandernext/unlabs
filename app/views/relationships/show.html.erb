@@ -27,7 +27,8 @@
 </div>
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2 text-center">
-    <h2 style="color: <%= relationship_status_colors[relationship_status_index] %>"><b><%= (@relationship.score * 100).floor() %>% (<%= relationship_status_grades[relationship_status_index] %>)</b></h2>
+    <p class="inline caption">Score</h1>
+    <h3 style="color: <%= relationship_status_colors[relationship_status_index] %>"><%= (@relationship.score * 100).floor() %>% (<%= relationship_status_grades[relationship_status_index] %>)</h3>
   </div>
 </div>
 
@@ -37,11 +38,11 @@
   <h1 class="text-center"><b>Explore relationships</b></h1>
 </div>
 <div class="row">
-  <div class="col-xs-6 col-md-4 col-md-offset-2 text-right">
+  <div class="col-xs-12 col-md-4 col-md-offset-2 text-right">
     <p class="caption">Country 1</p>
     <%= f.select :country_id, Country.all.collect {|p| [ p.name, p.id, :title => p.flag ] }, { :selected => @relationship.country_id }, { :class => 'selectpicker', 'data-live-search' => 'true'}%>
   </div>
-  <div class="col-xs-6 col-md-4 text-left">
+  <div class="col-xs-12 col-md-4 text-left">
     <p class="caption">Country 2</p>
     <%= f.select :friend_id, Country.all.collect {|p| [ p.name, p.id, :title => p.flag ] }, { :selected => @relationship.friend_id }, { :class => 'selectpicker', 'data-live-search' => 'true'}%>
   </div>
