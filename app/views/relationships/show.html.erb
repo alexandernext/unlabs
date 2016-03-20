@@ -1,11 +1,11 @@
-<% relationship_status_quotes = ['mortal enemies', 'enemies', 'hostile', 'indifferent', 'acquaintances', 'friends', 'BFFs', 'family'] %>
+<% relationship_status_quotes = ['mortal enemies', 'enemies', 'hostile strangers', 'strangers', 'acquaintances', 'friends', 'BFFs', 'family'] %>
 <% relationship_status_colors = ['#c0392b', '#e74c3c', '#d35400', '#2c3e50', '#1abc9c', '#2ecc71', '#29b463', '#29b463'] %>
 <% relationship_status_grades = ['F-', 'F', 'D', 'C', 'B', 'A-', 'A', 'A+'] %>
 <% relationship_status_index = (@relationship.score * 4 + 4).floor() %>
 
 <p id="notice"><%= notice %></p>
 <div class="row text-center">
-  <h1><b>You're probably <%= relationship_status_quotes[relationship_status_index] %> with each other!</b></h1>
+  <h1><b>You are <span style="color: <%= relationship_status_colors[relationship_status_index] %>"><%= relationship_status_quotes[relationship_status_index] %></span>!</b></h1>
 </div>
 <div class="row">
   <div class="col-xs-6 col-md-4 col-md-offset-2 text-right">
@@ -17,18 +17,24 @@
 </div>
 <div class="row">
   <div class="col-xs-6 col-md-4 col-md-offset-2 text-right">
-    <a href="<%= country_path(@relationship.country) %>"><h2 class="inline"><b><%= @relationship.country.name %></b></h1></a>
-    <img class="inline img-responsive inline-flag-right" src="/<%= @relationship.country.flag %>"></img>
+    <img class="inline img-responsive" src="/<%= @relationship.country.flag %>"></img>
   </div>
   <div class="col-xs-6 col-md-4 text-left">
-    <img class="inline img-responsive inline-flag-left" src="/<%= @relationship.friend.flag %>"></img>
+    <img class="inline img-responsive" src="/<%= @relationship.friend.flag %>"></img>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-md-4 col-md-offset-2 text-right">
+    <a href="<%= country_path(@relationship.country) %>"><h2 class="inline"><b><%= @relationship.country.name %></b></h1></a>
+  </div>
+  <div class="col-xs-6 col-md-4 text-left">
     <a href="<%= country_path(@relationship.friend) %>"><h2 class="inline"><b><%= @relationship.friend.name %></b></h1></a>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2 text-center">
     <p class="inline caption">Score</h1>
-    <h3 style="color: <%= relationship_status_colors[relationship_status_index] %>"><%= (@relationship.score * 100).floor() %>% (<%= relationship_status_grades[relationship_status_index] %>)</h3>
+    <h2 style="color: <%= relationship_status_colors[relationship_status_index] %>"><%= (@relationship.score * 100).floor() %>% (<%= relationship_status_grades[relationship_status_index] %>)</h2>
   </div>
 </div>
 
