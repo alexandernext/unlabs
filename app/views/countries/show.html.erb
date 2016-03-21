@@ -7,7 +7,7 @@
 </div>
 <div class="row">
   <div class="col-sm-6 text-right">
-    <p class="caption">Best Allies</p>
+    <p class="caption">Agrees most with</p>
     <% @country.relationships.sort_by { |rel| rel.score }.reverse()[0..11].each do |friendship| %>
     <a href="<%= relationship_path(friendship) %>">
       <h4 class="inline"><%= friendship.friend.name %></h4>
@@ -17,7 +17,7 @@
     <% end %>
   </div>
   <div class="col-sm-6 text-left">
-    <p class="caption">Worst Enemies</p>
+    <p class="caption">Disagrees most with</p>
     <% @country.relationships.sort_by { |rel| rel.score }[0..11].each do |friendship| %>
       <img class="inline img-responsive inline-flag-left flag-list" src="/<%= friendship.friend.flag %>"></img>
     <a href="<%= relationship_path(friendship) %>">
