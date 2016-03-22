@@ -1,7 +1,7 @@
-<% relationship_status_quotes = ['disagree on basically everything', 'disagree most of the time', 'disagree on some things', 'don\'t care how each other votes', 'agree on some things', 'agree most of the time', 'agree on basically everything'] %>
+<% relationship_status_quotes = ['disagree on basically everything', 'disagree most of the time', 'disagree on some things', 'don\'t care how each other votes', 'agree on some things', 'agree on many things', 'agree on most things', 'agree on basically everything'] %>
 <% relationship_status_colors = ['#c0392b', '#e74c3c', '#d35400', '#2c3e50', '#1abc9c', '#2ecc71', '#29b463', '#29b463'] %>
 <% relationship_status_grades = ['F-', 'F', 'D', 'C', 'B', 'A-', 'A', 'A+'] %>
-<% relationship_status_index = (@relationship.score * 4 + 4).floor() %>
+<% relationship_status_index = (@relationship.score * 4 + 3.5).floor() %>
 
 <p id="notice"><%= notice %></p>
 <div class="row text-center">
