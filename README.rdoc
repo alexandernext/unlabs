@@ -1,6 +1,6 @@
 == UNLabs
 
-UNLabs is a tool that allows you to quickly estimate how the relationship between two United Nations member states are, based on previous United Nations General Assembly voting records. This web application was developed to serve this information on the web for public use.
+UNLabs is a tool that allows you to quickly estimate how the relationship between two United Nations member states are, based on previous United Nations General Assembly voting records. This web application was developed to serve this information on the web for public use. It is available at http://unlabs.alexnext.com.
 
 The dataset is sourced from the following source.
 Erik Voeten "Data and Analyses of Voting in the UN General Assembly" Routledge Handbook of International Organization, edited by Bob Reinalda (published May 27, 2013).
